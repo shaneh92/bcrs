@@ -1,0 +1,40 @@
+/*
+======================================
+; Title: nav.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 07 September 2023
+; Last Updated: 28 September 2023
+; Description: This code supports styling for the Nav Component
+; Sources Used: N/A
+;=====================================
+*/
+
+.font-yellow {
+  color: #FFD800;
+}
+
+.custom-drop {
+ background-color: black;
+}
+.custom-drop:hover {
+  background-color: #FFD800;
+  color: black;
+}
+
+.custom-drop-link {
+  cursor: pointer;
+}
+
+.bg-potter-yellow {
+  background-color: #FFD800;
+}
+
+@media print {
+  .hide-print {
+    display: none !important;
+  }
+}
+
+.logo2 {
+  width: 20%;
+}

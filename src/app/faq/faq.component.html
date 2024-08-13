@@ -1,0 +1,369 @@
+<!--
+======================================
+; Title: nav.component.html
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 19 September 2023
+; Last Updated: 03 October 2023
+; Description: This code supports the HTML functionality for the FAQ Component
+; Sources Used: Bellevue University WEB-450 GitHub
+; MAT Expansion Panels: https://material.angular.io/components/expansion/overview
+;=====================================
+-->
+
+<div class="row">
+  <br />
+  <!--First Column-->
+  <div class="col faq-padding-left">
+    <br>
+    <h2>Account FAQ:</h2>
+    <br>
+
+    <!--How To Register For A New Account-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          How do I register for a new account?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p><b>Step 1: </b>Navigate to the <a routerLink="/security/signin" target="_blank">Sign In</a> page.</p>
+      <p><b>Step 2: </b>Click the <a routerLink="/security/register" target="_blank">Create New Account</a> button.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/registerstep2.png"
+      width="50%"
+      alt="image showing where the Users link is"><br><br>
+      <p><b>Step 3: </b>Fill out all form fields and pick three security questions to answer (these will be used in case you need to reset your password in the future) then click the submit button. You will automatically be redirected back to the <a routerLink="/security/signin" target="_blank">Sign In</a> page.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/registerstep3.png"
+      width="50%"
+      alt="image showing where the Users link is"><br><br>
+
+      <p><b>Step 4: </b>Sign in using the email address and password you entered from Step 3.</p>
+    </mat-expansion-panel>
+    <br>
+
+    <!--How To Reset A Password-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> How do I reset my password? </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p><b>Step 1: </b>Navigate to the <a routerLink="/security/signin" target="_blank">Sign In</a> page.</p>
+      <p><b>Step 2: </b>Click the <a routerLink="/security/forgot-password" target="_blank">Forgot Password</a> button.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/resetstep2.png"
+      width="50%"
+      alt="image showing where the Forgot Password button is"><br><br>
+      <p><b>Step 4: </b>Enter the email address you used when you registered as a user (and that you use to sign in with) into the input bar and click the Verify Account button.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/resetstep3.png"
+      width="50%"
+      alt="image showing where the Verify Account button is"><br><br>
+      <p><b>Step 4: </b>Enter the answers to your security questions and click the Verify Security Questions button. All three answers must be correct in order to reset your password.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/resetstep4.png"
+      width="50%"
+      alt="image showing where the Forgot Password button is"><br><br>
+      <p><b>Step 5: </b> Enter your new password and click the Change Password button. You will be automatically redirected to the <a routerLink="security/signin" target="_blank">Sign In</a> page where you can now login with your new password.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/resetstep5.png"
+      width="50%"
+      alt="image showing where the Forgot Password button is"><br><br>
+    </mat-expansion-panel>
+    <br>
+    <!--How To Edit My Profile-->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> How do I edit my profile? </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p><b>Step 1: </b>Navigate to the My Profile page.</p>
+    <img
+    class="zoom rounded"
+    src="./assets/profilestep1.png"
+    width="50%"
+    alt="image showing where the My Profile link is"><br><br>
+    <p><b>Step 2: </b>Click the Edit button.</p>
+    <img
+    class="zoom rounded"
+    src="./assets/profilestep2.png"
+    width="50%"
+    alt="image showing where the Edit button is"><br><br>
+    <p><b>Step 3: </b>After you click the edit button, the form will "enable" and you will be able to change any of the information in the fields. Click the Save button when you're done.</p>
+    <img
+    class="zoom rounded"
+    src="./assets/profilestep3.png"
+    width="50%"
+    alt="image showing where the Save button is"><br><br>
+    <p><b>Step 4: </b>A success dialog will display and your updated information will display.</p>
+    <img
+    class="zoom rounded"
+    src="./assets/profilestep4.png"
+    width="50%"
+    alt="image showing Profile Updated Successfully dialog"><br><br>
+  </mat-expansion-panel>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+
+
+
+
+  <!--Second Column-->
+  <div class="col faq-padding-left">
+    <br />
+    <h2>Customer Service FAQ:</h2>
+    <br />
+
+    <!--Making an Invoice-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> How do I make an invoice? </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p><b>Step 1: </b> Navigate to the <a routerLink="/service-repair" target="_blank">Add Invoice</a> page.</p>
+      <p><b>Step 2: </b> Fill out the Customer Information (Customer Email, Customer Full Name).</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep2.png"
+      width="50%"
+      alt="image showing where the Customer Email and Customer Full Name fields are"><br><br>
+      <p><b>Step 3:</b> Fill out the Invoice Date (must be in the yyyy-mm-dd format).</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep3.png"
+      width="50%"
+      alt="image showing where the Invoice Date field is"><br><br>
+      <p><b>Step 4:</b> Select all fixed cost services that the customer has requested by checking the applicable check boxes.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep4.png"
+      width="50%"
+      alt="image showing where the Fixed Cost Services checkboxes are"><br><br>
+      <p><b>Step 5: </b>If the customer has any custom work that they want performed, enter the total number of hours (fractional hours i.e. "1.5" are okay) the work will take and the total cost for the parts (if applicable) for this custom work.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep5.png"
+      width="50%"
+      alt="image showing where the the Custom Work Labor and Parts fields are"><br><br>
+      <p><b>Step 6: </b>Click the "Create Invoice" button at the bottom of the form. The "Create Invoice" button will be greyed out (disabled) if there are any errors or missing items on the form. Once you hit the button, you will see the Invoice Created Successfully dialog box and you will automatically be redirected to the <a routerLink="/invoice-list" target="_blank">Invoice List</a> page where you will see your newly created invoice.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep6.png"
+      width="50%"
+      alt="image showing where the Create Invoice button is"><br><br>
+    </mat-expansion-panel>
+    <br />
+
+    <!--Service Repair Request-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          How do I print an invoice?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p><b>Step 1: </b> Navigate to the <a routerLink="/invoice-list" target="_blank">Invoice List</a> page.</p>
+      <p><b>Step 2: </b> Search the entries for the invoice you wish to print. If you know the customer email or customer name, hit ctrl-f to search to find it easier.</p>
+      <p><b>Step 3: </b> Click the yellow Invoice Number button for the invoice you wish to print. This will redirect you automatically to the invoice view page for that individual invoice.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/printstep3.png"
+      width="50%"
+      alt="image showing where the yellow Invoice Number button is"><br><br>
+      <p><b>Step 4: </b> Click the print icon on the invoice. This will initiate the computer's print function. All background colors and unnecessary formatting will automatically be hidden in order to print a clean invoice for the customer.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/printstep4.png"
+      width="50%"
+      alt="image showing where the print icon is"><br><br>
+      <p><b>Step 5:</b> Click print on your computer for the printer that you wish to use.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/printstep5.png"
+      width="50%"
+      alt="image showing where the print function button is"><br><br>
+    </mat-expansion-panel>
+    <br /><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+
+  <!--Third Column-->
+  <div class="col faq-padding-left faq-padding-right">
+    <br />
+    <h2>Administrator FAQ:</h2>
+    <br>
+
+    <!--How To Add A User-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> How do I add a user? </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        <b>Step 1:</b> Navigate to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page - the
+        link is located in the top right of the page under the profile icon when
+        you are signed in as an Administrator.
+      </p>
+      <img
+        class="zoom rounded"
+        src="./assets/addstep1.png"
+        width="50%"
+        alt="image showing where the Users link is"><br><br>
+      <p>
+        <b>Step 2:</b> On the
+        <a routerLink="/admin/users" target="_blank">User List</a> page, click
+        the "Add A New User" button. This will bring you to the
+        <a routerLink="/admin/users/new" target="_blank">User Creation</a> page.
+      </p>
+      <img
+        class="zoom rounded"
+        src="./assets/addstep2.png"
+        width="50%"
+        alt="image showing where the Add A New User button is"
+      /><br /><br />
+      <p>
+        <b>Step 3:</b> On the
+        <a routerLink="/admin/users/new" target="_blank">User Creation</a> page,
+        fill out the form with the New User's Information.
+        <i
+          >Note: Ensure all fields are filled out and in the proper format or
+          you will receive an error. The submit button will not be active until
+          all errors are resolved.</i
+        >
+      </p>
+      <p>
+        <b>Step 4: </b>Hit the Submit button at the bottom of the form. You will
+        then be redirected back to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page where
+        you should see your newly created User!
+      </p>
+    </mat-expansion-panel>
+    <br />
+
+    <!--Editing a User-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> How do I edit a user's information? </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        <b>Step 1: </b>Navigate to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page - the
+        link for this is located in the top right of the page under the profile
+        icon when you are signed in as an Administrator.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/addstep1.png"
+        width="50%"
+        alt="image showing where the Users link is"
+      /><br /><br />
+      <p>
+        <b>Step 2: </b>Click the pencil icon next to the user you wish to
+        disable.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/updatestep2.png"
+        width="50%"
+        alt="image showing where the pencil icon is in the User List Page"
+      /><br /><br />
+      <p>
+        <b>Step 3: </b> After clicking the pencil icon you will be directed to
+        the Update View page. This page will be populated with the current user
+        information. Change any information here that you want to update and
+        then click the Submit button. You will then be redirected back to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page where
+        your updated record will be displayed.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/updatestep3.png"
+        width="50%"
+        alt="image showing where the submit button is on the User View page"
+      />
+    </mat-expansion-panel>
+    <br />
+
+    <!--Disabling a User-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> How do I disable a user? </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>
+        <b>Step 1: </b> Navigate to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page - the
+        link is located in the top right of the page under the profile icon when
+        you are signed in as an Administrator.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/addstep1.png"
+        width="50%"
+        alt="image showing where the Users link is"
+      /><br /><br />
+      <p>
+        <b>Step 2: </b> Click the trash can icon next to the user you wish to
+        disable.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/disablestep2.png"
+        width="50%"
+        alt="image showing where the disable icon is in the User List Page"
+      /><br /><br />
+      <p>
+        <b>Step 3: </b> After clicking the trash can icon, a dialog box will ask
+        you to confirm that you want to disable the user. Click OK.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/disablestep3.png"
+        width="50%"
+        alt="image showing the dialog box asking to confirm the disabling of the user"
+      /><br /><br />
+      <p>
+        <b>Step 4: </b> After clicking OK, you should see a User Disabled
+        Successfully message and then the page will refresh after a few seconds
+        and the user that was disabled should no longer be visible.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/disablestep4.png"
+        width="50%"
+        alt="image showing the user disabled successfully message"
+      /><br /><br />
+    </mat-expansion-panel>
+    <br />
+
+    <!--Viewing Purchases By Service-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          How can I view the amount of purchases by service?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p> <b>Step 1: </b> Navigate to the
+        <a routerLink="/graph" target="_blank">Graph</a> page - the
+        link is located in the top right of the page under the profile icon when you are signed in as an Administrator.</p>
+        <img
+        class="rounded zoom"
+        src="./assets/graphstep1.png"
+        width="50%"
+        alt="image showing where the Graph page link is"
+      /><br /><br />
+      <p><b>Step 2: </b> Hover over any section of the pie chart to see how many sales there have been of that particular service.</p>
+      <img
+      class="rounded zoom"
+      src="./assets/graphstep2.png"
+      width="50%"
+      alt="image showing the number of sales for a particular service by hovering over the slice of the pie chart"
+    /><br /><br />
+    </mat-expansion-panel>
+    <!--creates some room at the end of the page between the footer-->
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br><br><br><br><br><br><br><br>
+  </div>
+
+
+
+</div>

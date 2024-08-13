@@ -1,0 +1,27 @@
+/*
+======================================
+; Title: footer.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 07 September 2023
+; Last Updated: 28 September 2023
+; Description: This code supports styling for the Footer Component
+; Sources Used: N/A
+;=====================================
+*/
+
+a {
+  color: #FFD800;
+}
+
+.footer {
+  min-height: 30px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+@media print {
+  .hide-print {
+    display: none !important;
+  }
+}

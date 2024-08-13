@@ -1,0 +1,62 @@
+/*
+======================================
+; Title: invoice-list.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 27 September 2023
+; Last Updated: 28 September 2023
+; Description: This code supports styling for the Invoice List Component
+; Sources Used: N/A
+;=====================================
+*/
+
+.bg-black {
+  background-color: black;
+}
+
+.bg-potter-yellow {
+  background-color: #FFD800;
+}
+
+.font-yellow {
+  color: #FFD800;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+table {
+  padding-left: 5px;
+  padding: 15px;
+  background-color: #FFF;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black
+}
+
+table tr {
+  border: 1px solid black;
+}
+
+table tr:hover {
+  background-color: #000;
+  color: #FFD800;
+}
+
+table th {
+  background-color: black;
+  color: #FFD800;
+  padding-left: 15px;
+}
+
+table td {
+  padding: 5px;
+}
+
+a {
+  color: black
+}
+
+.width {
+  width: 80%;
+}

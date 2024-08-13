@@ -1,0 +1,147 @@
+<!--
+======================================
+; Title: service-repair.component.html
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 26 September 2023
+; Last Updated: 29 September 2023
+; Description: This code supports the HTML functionality for the Service Repair Component
+; Sources Used: N/A
+;=====================================
+-->
+
+<div class="container-fluid pt-2 set-width">
+
+  <!--logo-->
+  <div class="text-center bg-potter-yellow"><img src="./assets/add-invoice-logo.png" width="60%" alt="Logo displaying a computer with text next to it that says Add An Invoice - Fill Out The Form"></div><hr>
+
+  <mat-card class="padding-left padding-right bg-black font-yellow">
+    <br>
+    <form [formGroup]="invoiceForm">
+      <!--Start of First Row-->
+      <div class="row">
+        <br><br>
+        <h4 class="text-center">Customer Information:</h4><br><br>
+        <div class="col-md-4">
+          <label>Customer Email:</label>
+          <input class="form-control bg-potter-yellow half-width" type="text" formControlName="email">
+        </div>
+
+
+        <div class="col-md-4">
+          <label>Customer Full Name:</label>
+          <input class="form-control bg-potter-yellow half-width" type="text" formControlName="fullName"><br>
+        </div>
+
+        <div class="col-md-4">
+
+          <label>Invoice Date:</label>
+          <input class="form-control bg-potter-yellow half-width" type="text" formControlName="orderDate" placeholder="yyyy-mm-dd"><br>
+
+        </div>
+
+      <!-- email error handling -->
+      <div class="col-md-4" *ngIf="invoiceForm.controls['email'].touched && invoiceForm.controls['email'].hasError('required')"><br>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          Email is required.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+
+      <div class="col-md-4" *ngIf="invoiceForm.controls['email'].touched && invoiceForm.controls['email'].hasError('email')"><br>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          Please enter a valid email address.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+      <!--end email error handling-->
+
+      <!-- date error handling -->
+      <div class="col-md-4" *ngIf="invoiceForm.controls['orderDate'].touched && invoiceForm.controls['orderDate'].hasError('required')"><br>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          Invoice Date is required.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+
+      <div class="col-md-4" *ngIf="invoiceForm.controls['orderDate'].touched && invoiceForm.controls['orderDate'].hasError('pattern')"><br>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          Date format must be yyyy-mm-dd
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+      <!--end date error handling-->
+
+      <!-- Customer Full Name error handling -->
+      <div class="col-md-4" *ngIf="invoiceForm.controls['fullName'].touched && invoiceForm.controls['fullName'].hasError('required')"><br>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          Customer Full Name is required.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+      <!-- end Customer Full Name error handling -->
+
+    </div>
+  </form>
+    <!--End of First Row-->
+      <br>
+
+    <!--Second Row Start-->
+    <div class="row bg-potter-yellow text-black rounded">
+      <h4 class="text-center">Fixed Cost Services:</h4>
+      <div class="col-md-3" *ngFor="let service of services">
+        <label>
+          <input type="checkbox" [(ngModel)]="service.selected" (change)="calculateTotal()">
+          {{ service.name }}: {{ service.price | currency }}
+        </label>
+      </div>
+      <br><br>
+    </div>
+
+      <!--End of Second Row-->
+      <br>
+      <!--Third Row Start-->
+      <div class="row bg-potter-yellow rounded">
+        <div class="col-md-12">
+          <h4 class="text-center text-black">Custom Work Services:</h4>
+          <h6 class="text-center text-black">Enter the total number of hours the custom work will take and the total cost associated with the parts</h6><br>
+        </div>
+
+        <div class="col-md-3">
+          <label class="text-black">Labor Hours ($50/hour):</label>
+          <input class="form-control half-width text-black" type="number" id="laborCost" [(ngModel)]="labor" (input)="calculateTotal()"><br>
+        </div>
+
+        <div class="col-md-3">
+          <label class="text-black">Parts Cost:</label>
+          <input class="form-control half-width text-black" type="number" id="partsCost" [(ngModel)]="parts" (input)="calculateTotal()"><br>
+        </div>
+
+
+      </div>
+      <!--Third Row End-->
+
+
+      <div><br>
+        <h3 class="font-yellow">Invoice Total: {{ totalCost | currency }}</h3>
+      </div>
+      <br>
+      <div>
+        <button (click)="createInvoice()"class="btn bg-potter-yellow text-black" [disabled]="!invoiceForm.valid">Create Invoice</button><br><br>
+      </div>
+
+
+
+
+
+
+  </mat-card>
+  <br>
+  <a routerLink="/"><button class="btn bg-black font-yellow">Go Back</button></a>
+  <!--Puts some space between footer and the bottom of the form-->
+  <br><br><br><br><br><br><br><br>
+
+
+
+
+
+</div>

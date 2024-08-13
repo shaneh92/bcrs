@@ -1,0 +1,834 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "1.0.0",
+    "title": "Combined API",
+    "description": "A combination of users and invoice APIs"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Find all users",
+        "description": "Returns all users.",
+        "responses": {
+          "200": {
+            "description": "Email document found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new user",
+        "description": "Creates a new user.",
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string",
+                        "example": "email@email.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "Password01"
+                      },
+                      "firstName": {
+                        "type": "string",
+                        "example": "First"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "example": "Last"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "123 Main St"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": "3395959555"
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "standard"
+                      },
+                      "isDisabled": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "selectedSecurityQuestions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "required": ["question", "answer"],
+                          "additionalProperties": false
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "firstName",
+                  "lastName",
+                  "phoneNumber",
+                  "address",
+                  "isDisabled",
+                  "role"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/users/{email}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Find user by email",
+        "description": "Returns an user's information including invoice based on their email.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email document found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Users"],
+        "summary": "Updates a user",
+        "description": "Updates a user",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "firstName": {
+                        "type": "string",
+                        "example": "Wolf"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "example": "Gang"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "123 Main St"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": "34535435345"
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "standard"
+                      },
+                      "isDisabled": {
+                        "type": "boolean",
+                        "example": false
+                      }
+                    },
+                    "required": [
+                      "firstName",
+                      "lastName",
+                      "phoneNumber",
+                      "address",
+                      "role"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "summary": "disables a user by email",
+        "description": "disables a user based on their email address.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Email address of the user to disable."
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User disabled successfully."
+          },
+          "404": {
+            "description": "User not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/users/{email}/profile": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "Updates a user's profile",
+        "description": "Updates a user's profile",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "firstName": {
+                        "type": "string",
+                        "example": "Wolf"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "example": "Gang"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "123 Main St"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": "34535435345"
+                      }
+                    },
+                    "required": [
+                      "firstName",
+                      "lastName",
+                      "phoneNumber",
+                      "address"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{email}/security-questions": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Find user security questions by email",
+        "description": "Returns an user's security questions based on their email.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email document found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/security/signin": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Sign in a user",
+        "description": "Signs in a user with their email and password.",
+        "requestBody": {
+          "description": "Sign in object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": ["email", "password"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User signed in successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/security/register": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Register a new user.",
+        "description": "Register a new user.",
+        "requestBody": {
+          "description": "Register a new user.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string",
+                        "example": "email@email.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "Password01"
+                      },
+                      "firstName": {
+                        "type": "string",
+                        "example": "First"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "example": "Last"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "123 Main St"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": "3395959555"
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "standard"
+                      },
+                      "isDisabled": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "selectedSecurityQuestions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "question": {
+                              "type": "string",
+                              "example": "What is your favorite color?"
+                            },
+                            "answer": {
+                              "type": "string",
+                              "example": "Blue"
+                            }
+                          },
+                          "required": ["question", "answer"],
+                          "additionalProperties": false
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      }
+                    },
+                    "required": [
+                      "email",
+                      "password",
+                      "firstName",
+                      "lastName",
+                      "address",
+                      "phoneNumber",
+                      "selectedSecurityQuestions"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User registered successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/security/verify/users/{email}": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Verify User",
+        "description": "Verifies the email so the user can eventually reset password.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "bach@nodebucket.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/security/verify/users/{email}/security-questions": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Verify security questions",
+        "description": "Verifies the security questions for the user.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "shanehingtgen@email.com"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body containing security questions",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "securityQuestions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "question": {
+                          "type": "string",
+                          "example": "What is your favorite color?"
+                        },
+                        "answer": {
+                          "type": "string",
+                          "example": "Blue"
+                        }
+                      },
+                      "required": ["question", "answer"],
+                      "additionalProperties": false
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/security/users/{email}/reset-password": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Reset password",
+        "description": "Resets the password for the user.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "bach@nodebucket.com"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Input new password to reset",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "example": "Password01"
+                  }
+                },
+                "required": ["password"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Password Reset"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/invoices": {
+      "post": {
+        "tags": ["Invoices"],
+        "summary": "Create a new invoice",
+        "description": "Creates a new invoice.",
+        "requestBody": {
+          "description": "invoice object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "invoice": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string",
+                        "example": "email@email.com"
+                      },
+                      "fullName": {
+                        "type": "string",
+                        "example": "Wolfgang Mozart"
+                      },
+                      "partsAmount": {
+                        "type": "number",
+                        "example": 123.54
+                      },
+                      "laborAmount": {
+                        "type": "number",
+                        "example": 55.45
+                      },
+                      "lineItemTotal": {
+                        "type": "number",
+                        "example": 255.87
+                      },
+                      "invoiceTotal": {
+                        "type": "number",
+                        "example": 344.11
+                      },
+                      "orderDate": {
+                        "type": "string",
+                        "example": "09/25/2023"
+                      },
+                      "lineItems": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "example": "Password Reset"
+                            },
+                            "price": {
+                              "type": "number",
+                              "example": 39.99
+                            }
+                          },
+                          "required": ["name", "number"],
+                          "additionalProperties": false
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "email",
+                  "fullName",
+                  "partsAmount",
+                  "laborAmount",
+                  "lineItemTotal",
+                  "invoiceTotal",
+                  "orderDate",
+                  "lineItems"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Invoice created successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Invoices"],
+        "summary": "Find all invoices",
+        "description": "Returns all invoices.",
+        "responses": {
+          "200": {
+            "description": "Invoices found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/invoices/{invoiceNumber}": {
+      "get": {
+        "tags": ["Invoices"],
+        "summary": "Find invoice by invoice number",
+        "description": "Returns an invoice based on the invoice number.",
+        "parameters": [
+          {
+            "name": "invoiceNumber",
+            "in": "path",
+            "description": "Invoice Number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice document found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/invoices/graph": {
+      "get": {
+        "tags": ["Invoices"],
+        "summary": "Find all services",
+        "description": "Returns all services.",
+        "responses": {
+          "200": {
+            "description": "Invoices found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    }
+  }
+}
