@@ -17,22 +17,20 @@ Feel free to explore the application by logging in with the following credential
 
 Username: admin@email.com
 Password: adminPassword123
+
 Installation
 Clone the repository:
-bash
-Copy code
+
 git clone https://github.com/shaneh92/bcrs.git
+
 Install dependencies for both frontend and backend:
-bash
-Copy code
-cd bobs-computer-repair-shop
+
 npm install
-cd frontend
-npm install
+
 Start the development server:
-bash
-Copy code
+
 npm start
-Usage
+
+Usage:
 Access the admin and customer portals via your browser.
 Explore the features such as invoice management, employee management, and data visualization.
